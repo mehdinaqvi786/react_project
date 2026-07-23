@@ -6,6 +6,7 @@ const Workouts = () => {
   const [exercises, setExercises] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [selected, setSelected] = useState('biceps');
+  const [isDesktop, setIsDesktop] = useState(true);
   const bodyParts = ['biceps', 'triceps', 'shoulders', 'back', 'abs', 'legs','chest'];
   const location = useLocation();
 
@@ -22,6 +23,13 @@ const Workouts = () => {
       .get('/workouts.json')
       .then((res) => setExercises(res.data))
       .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth > 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
   useEffect(() => {
@@ -243,7 +251,7 @@ const Workouts = () => {
                 className="workout-card"
                 key={ex.id}
                 style={{ animationDelay: `${i * 0.2}s` }}
-                onMouseMove={(e) => {
+                onMouseMove={isDesktop ? (e) => {
                   const card = e.currentTarget;
                   const rect = card.getBoundingClientRect();
                   const x = e.clientX - rect.left;
@@ -253,11 +261,11 @@ const Workouts = () => {
                   const rotateX = ((y - centerY) / centerY) * -5;
                   const rotateY = ((x - centerX) / centerX) * 5;
                   card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-                }}
-                onMouseLeave={(e) => {
+                } : undefined}
+                onMouseLeave={isDesktop ? (e) => {
                   const card = e.currentTarget;
                   card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-                }}
+                } : undefined}
               >
                 <img src={ex.image} alt={ex.title} />
                 <h3>{ex.title}</h3>

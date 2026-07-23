@@ -62,6 +62,11 @@ const Navbar = () => {
           padding: 0.5rem;
         }
 
+        /* dropdown container positioned relative on desktop, static on mobile */
+        .workouts-dropdown {
+          position: relative;
+        }
+
         .dropdown a {
           padding: 0.5rem 1rem;
           font-size: 14px;
@@ -110,19 +115,23 @@ const Navbar = () => {
             flex: 1;
           }
 
+          /* keep mobile menu in the document flow so it pushes content down
+             instead of overlapping page content */
           .nav-links {
             display: ${mobileMenuOpen ? 'flex' : 'none'} !important;
             flex-direction: column;
             width: 100%;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
+            position: static;
             background: ${darkMode ? '#0f0c29' : '#f8f9fa'};
             flex-basis: 100%;
             gap: 0.5rem;
-            padding: 1rem;
-            border-top: 1px solid ${darkMode ? '#00eaff' : '#ccc'};
+            padding: 1rem 0.5rem;
+            border-top: 1px solid ${darkMode ? '#00eaff' : '#e6e6e6'};
+            box-shadow: ${darkMode ? '0 4px 12px rgba(0,0,0,0.4)' : 'none'};
+          }
+
+          .workouts-dropdown {
+            position: static;
           }
 
           .nav-links a {
@@ -162,15 +171,16 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="brand">Modern Gym</div>
 
-        <div className="nav-links" style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+        <div className="nav-links" style={{ display: 'flex', alignItems: 'center' }}>
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
 
           {/* Workouts Dropdown */}
           <div
+            className="workouts-dropdown"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
-            style={{ position: 'relative' }}
+            onClick={() => setDropdownOpen(!dropdownOpen)}
           >
             <span style={{ cursor: 'pointer', margin: '0 1rem' }}>Workouts ▾</span>
             {dropdownOpen && (

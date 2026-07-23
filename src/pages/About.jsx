@@ -49,7 +49,7 @@ const About = () => {
     fontWeight: "bold",
     marginBottom: "1.5rem",
     textShadow: "0 0 5px #0ff, 0 0 10px #0ff",
-    animation: "typewriter 6s steps(40, end) infinite",
+    animation: "typewriter 3s steps(40, end) forwards",
     whiteSpace: "nowrap",
     overflow: "hidden",
     borderRight: "2px solid #0ff",
@@ -152,8 +152,7 @@ const About = () => {
 
         @keyframes typewriter {
           0% { width: 0 }
-          50% { width: 100% }
-          100% { width: 0 }
+          100% { width: 100% }
         }
 
         .btn-neon:hover,
@@ -199,6 +198,13 @@ const About = () => {
             max-width: 350px;
             margin: 0 auto;
           }
+          /* disable typewriter and allow heading wrap on smaller screens */
+          .about-heading {
+            white-space: normal !important;
+            overflow: visible !important;
+            animation: none !important;
+            border-right: none !important;
+          }
         }
 
         @media (max-width: 480px) {
@@ -233,7 +239,7 @@ const About = () => {
         <div style={container}>
           <div style={leftCol}>
             <h4 style={headingSm}>✨ About Fitness Center ✨</h4>
-            <h2 style={headingLg}>Build Your Dream Body With Us.</h2>
+            <h2 style={headingLg} className="about-heading">Build Your Dream Body With Us.</h2>
             <p style={{ marginBottom: "1.5rem" }}>
               “Choose us for a supportive, results‑driven fitness experience that transforms your goals into reality.”
             </p>
