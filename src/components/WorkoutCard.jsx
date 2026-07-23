@@ -31,16 +31,63 @@ const WorkoutCard = ({ title, description, imageUrl }) => {
   };
 
   return (
-    <div style={cardStyle}>
-      {imageUrl && <img src={imageUrl} alt={title} style={imageStyle} />}
-      <h3 style={titleStyle}>{title}</h3>
-      <div
-        style={descriptionStyle}
-        dangerouslySetInnerHTML={{
-          __html: description || "<em>Description not available.</em>",
-        }}
-      />
-    </div>
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .workout-card-container {
+            margin: 0.5rem !important;
+            padding: 0.8rem !important;
+            max-width: 100% !important;
+          }
+
+          .workout-card-title {
+            font-size: 1rem !important;
+          }
+
+          .workout-card-image {
+            height: 150px !important;
+          }
+
+          .workout-card-description {
+            font-size: 0.85rem !important;
+            height: 70px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .workout-card-container {
+            margin: 0.5rem auto !important;
+            padding: 0.6rem !important;
+            width: 90% !important;
+            max-width: 280px !important;
+          }
+
+          .workout-card-title {
+            font-size: 0.9rem !important;
+          }
+
+          .workout-card-image {
+            height: 120px !important;
+          }
+
+          .workout-card-description {
+            font-size: 0.8rem !important;
+            height: 60px !important;
+          }
+        }
+      `}</style>
+      <div style={cardStyle} className="workout-card-container">
+        {imageUrl && <img src={imageUrl} alt={title} style={imageStyle} className="workout-card-image" />}
+        <h3 style={titleStyle} className="workout-card-title">{title}</h3>
+        <div
+          style={descriptionStyle}
+          className="workout-card-description"
+          dangerouslySetInnerHTML={{
+            __html: description || "<em>Description not available.</em>",
+          }}
+        />
+      </div>
+    </>
   );
 };
 

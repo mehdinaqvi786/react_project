@@ -122,6 +122,87 @@ const Contact = () => {
           50% { box-shadow: 0 0 20px #0ff; }
           100% { box-shadow: 0 0 10px #0ff; }
         }
+
+        @media (max-width: 768px) {
+          .contact-section {
+            padding: 2rem 1rem;
+          }
+
+          .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .contact-form {
+            max-width: 100%;
+            padding: 1.5rem;
+          }
+
+          .contact-form input,
+          .contact-form textarea {
+            padding: 10px;
+            font-size: 0.95rem;
+            margin: 8px 0;
+          }
+
+          .contact-form button {
+            padding: 10px;
+            font-size: 0.9rem;
+          }
+
+          .map-heading {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+          }
+
+          .map-container {
+            width: 95%;
+          }
+
+          iframe {
+            height: 300px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .contact-section {
+            padding: 1.5rem 1rem;
+          }
+
+          .contact-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+          }
+
+          .contact-form {
+            padding: 1rem;
+          }
+
+          .contact-form input,
+          .contact-form textarea {
+            padding: 8px;
+            font-size: 0.9rem;
+            margin: 6px 0;
+          }
+
+          .contact-form button {
+            padding: 8px;
+            font-size: 0.8rem;
+          }
+
+          .map-heading {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+          }
+
+          .map-container {
+            width: 100%;
+          }
+
+          iframe {
+            height: 250px;
+          }
+        }
       `}</style>
 
       <div className="contact-section">

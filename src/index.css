@@ -22,12 +22,44 @@ a:hover {
   color: #535bf2;
 }
 
+html, body, #root {
+  /* Ensure the app background remains dark to avoid white gaps between sections */
+  background-color: #242424 !important;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* Use border-box globally to avoid unexpected overflow from padding/border */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Layout: make root a column flex container so footer stays at the bottom */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  height: 100%;
+}
+
+/* Ensure the main React app content expands to fill available space */
+#root > * {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+/* Footer should not shrink and should sit at the bottom */
+.gym-footer {
+  flex-shrink: 0;
+}
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  /* Prevent unwanted horizontal scroll on small devices */
+  overflow-x: hidden;
 }
 
 h1 {

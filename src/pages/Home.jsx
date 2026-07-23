@@ -80,7 +80,9 @@ const Home = () => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          /* Use svh for mobile browser UI safe height, with vh fallback */
           min-height: 100vh;
+          min-height: 100svh;
           padding: 4rem 2rem;
           text-align: center;
           background-size: cover;
@@ -89,6 +91,7 @@ const Home = () => {
           color: #fff;
           font-family: 'Teko', sans-serif;
           position: relative;
+          z-index: 0;
         }
 
         @keyframes backgroundSlide {
@@ -102,7 +105,13 @@ const Home = () => {
           position: absolute;
           inset: 0;
           background: rgba(0, 0, 0, 0.6);
-          z-index: -1;
+          z-index: 0;
+        }
+
+        /* Ensure direct children render above the background overlay */
+        .hero-section > * {
+          position: relative;
+          z-index: 1;
         }
 
         .hero-title {
@@ -143,6 +152,65 @@ const Home = () => {
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(40px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+          .hero-section {
+            padding: 1.5rem 1rem;
+            /* Use 100svh to fill full mobile viewport without white gap */
+            min-height: 100svh;
+            min-height: 100vh;
+          }
+
+          .hero-title {
+            font-size: 2rem;
+          }
+
+          .hero-subtitle {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+          }
+
+          .hero-buttons {
+            gap: 0.5rem;
+            justify-content: center;
+          }
+
+          .btn-dark, .btn-primary {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+          }
+
+          .chatbot-box {
+            width: 90vw;
+            max-width: 380px;
+            bottom: 10px;
+            right: 5vw;
+            left: 5vw;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-section {
+            padding: 1rem 0.5rem;
+            min-height: 100svh;
+            min-height: 100vh;
+          }
+
+          .hero-title {
+            font-size: 1.5rem;
+          }
+
+          .hero-subtitle {
+            font-size: 0.9rem;
+          }
+
+          .chatbot-box {
+            width: 95vw;
+            left: 2.5vw;
+            right: 2.5vw;
+            height: 60vh;
+          }
         }
 
         .chatbot-box {

@@ -153,13 +153,66 @@ const Workouts = () => {
           color: #ccc;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+          .workout-section {
+            padding: 2rem 1rem;
+          }
+
           .workout-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .body-part-buttons {
+            padding: 0.5rem;
+            gap: 0.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          .body-part-buttons button {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+          }
+
+          .exercise-grid {
+            gap: 1rem;
+            flex-direction: column;
+            align-items: center;
           }
 
           .workout-card {
-            width: 90%;
+            width: 100%;
+            max-width: 280px;
+          }
+
+          .workout-card img {
+            height: 150px;
+          }
+
+          .workout-card h3 {
+            font-size: 1.1rem;
+          }
+
+          .workout-card p {
+            font-size: 0.8rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .workout-title {
+            font-size: 1.3rem;
+          }
+
+          .body-part-buttons button {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.65rem;
+          }
+
+          .workout-card {
+            width: 100%;
           }
         }
       `}</style>

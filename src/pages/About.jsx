@@ -171,6 +171,62 @@ const About = () => {
           opacity: 1 !important;
           transform: translateY(0) !important;
         }
+
+        @media (max-width: 768px) {
+          div[style] {
+            padding: 3rem 1rem !important;
+          }
+
+          h2[style] {
+            font-size: 1.8rem !important;
+          }
+
+          h4[style] {
+            font-size: 1.2rem !important;
+          }
+
+          button[style] {
+            padding: 0.5rem 1rem !important;
+            font-size: 0.8rem !important;
+          }
+
+          div[style*="display: flex"][style*="gap"] {
+            gap: 1rem !important;
+            flex-direction: column !important;
+          }
+
+          img[style*="width: 100%"] {
+            max-width: 350px;
+            margin: 0 auto;
+          }
+        }
+
+        @media (max-width: 480px) {
+          h2[style] {
+            font-size: 1.5rem !important;
+            overflow: visible !important;
+            white-space: normal !important;
+          }
+
+          h4[style] {
+            font-size: 1rem !important;
+          }
+
+          button[style] {
+            padding: 0.4rem 0.8rem !important;
+            font-size: 0.7rem !important;
+          }
+
+          p[style] {
+            font-size: 0.9rem !important;
+          }
+
+          div[style*="width: 65px"] {
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 1.2rem !important;
+          }
+        }
       `}</style>
 
       <section ref={sectionRef} style={section} id="about">

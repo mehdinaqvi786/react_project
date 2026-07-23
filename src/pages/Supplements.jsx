@@ -164,6 +164,90 @@ const Supplements = () => {
           50% { box-shadow: 0 0 20px #0ff; }
           100% { box-shadow: 0 0 10px #0ff; }
         }
+
+        @media (max-width: 768px) {
+          .supplement-section {
+            padding: 2rem 1rem;
+          }
+
+          .supplement-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+          }
+
+          .category-box {
+            width: 100%;
+            max-width: 280px;
+            height: 240px;
+          }
+
+          .supplement-card {
+            width: 100%;
+            max-width: 260px;
+          }
+
+          .category-image {
+            width: 70px;
+            height: 70px;
+          }
+
+          .supplement-image {
+            height: 150px;
+          }
+
+          .show-btn {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .supplement-section {
+            padding: 1.5rem 1rem;
+          }
+
+          .supplement-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+          }
+
+          .category-box {
+            width: 100%;
+            max-width: 100%;
+            height: 220px;
+            padding: 1rem;
+          }
+
+          .supplement-card {
+            width: 100%;
+            max-width: 100%;
+            padding: 12px;
+          }
+
+          .category-image {
+            width: 60px;
+            height: 60px;
+          }
+
+          .supplement-image {
+            height: 130px;
+          }
+
+          .show-btn {
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+          }
+
+          .supplement-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .supplement-card p {
+            font-size: 0.8rem !important;
+          }
+        }
       `}</style>
 
       <div className="supplement-section">

@@ -5,6 +5,7 @@ import { ThemeContext } from '../context/ThemeContext';
 const Navbar = () => {
   const { darkMode, toggleTheme } = useContext(ThemeContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const bodyParts = ['biceps', 'triceps', 'shoulders', 'back', 'abs', 'legs','chest'];
 
   return (
@@ -97,6 +98,65 @@ const Navbar = () => {
           from { opacity: 0; transform: scale(0.9); }
           to { opacity: 1; transform: scale(1); }
         }
+
+        @media (max-width: 768px) {
+          .navbar {
+            padding: 1rem;
+            flex-wrap: wrap;
+          }
+
+          .brand {
+            font-size: 24px;
+            flex: 1;
+          }
+
+          .nav-links {
+            display: ${mobileMenuOpen ? 'flex' : 'none'} !important;
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: ${darkMode ? '#0f0c29' : '#f8f9fa'};
+            flex-basis: 100%;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-top: 1px solid ${darkMode ? '#00eaff' : '#ccc'};
+          }
+
+          .nav-links a {
+            margin: 0.5rem 0;
+            display: block;
+          }
+
+          .hamburger-btn {
+            background: none;
+            border: none;
+            color: ${darkMode ? '#00eaff' : '#007bff'};
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            order: 3;
+          }
+
+          .theme-toggle {
+            order: 4;
+            font-size: 12px;
+            padding: 4px 8px;
+          }
+        }
+
+        @media (min-width: 769px) {
+          .hamburger-btn {
+            display: none;
+          }
+
+          .nav-links {
+            display: flex !important;
+          }
+        }
       `}</style>
 
       <nav className="navbar">
@@ -127,6 +187,10 @@ const Navbar = () => {
           <Link to="/supplements">Supplements</Link>
           <Link to="/contact">Contact</Link>
         </div>
+
+        <button className="hamburger-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          {mobileMenuOpen ? '✕' : '☰'}
+        </button>
 
         <button className="theme-toggle" onClick={toggleTheme}>
           {darkMode ? '☀ Light Mode' : '🌙 Dark Mode'}

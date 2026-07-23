@@ -13,9 +13,28 @@ const MuscleGroup = ({ muscleName, onClick }) => {
   };
 
   return (
-    <div style={boxStyle} onClick={onClick}>
-      {muscleName}
-    </div>
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .muscle-group-box {
+            padding: 0.8rem 1.5rem !important;
+            font-size: 0.9rem !important;
+            margin: 0.4rem !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .muscle-group-box {
+            padding: 0.6rem 1rem !important;
+            font-size: 0.8rem !important;
+            margin: 0.3rem !important;
+          }
+        }
+      `}</style>
+      <div style={boxStyle} className="muscle-group-box" onClick={onClick}>
+        {muscleName}
+      </div>
+    </>
   );
 };
 

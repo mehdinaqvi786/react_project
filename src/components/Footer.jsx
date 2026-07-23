@@ -43,6 +43,29 @@ const Footer = () => {
           color: #00eaff;
           text-shadow: 0 0 12px #00eaff;
         }
+
+        @media (max-width: 768px) {
+          .gym-footer {
+            padding: 1.5rem 1rem;
+            font-size: 0.9rem;
+          }
+
+          .gym-footer strong {
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .gym-footer {
+            padding: 1rem 0.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+          }
+
+          .gym-footer strong {
+            font-size: 0.9rem;
+          }
+        }
       `}</style>
 
       <footer className="gym-footer">
